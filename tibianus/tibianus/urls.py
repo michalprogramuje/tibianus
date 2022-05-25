@@ -18,6 +18,7 @@ from django.urls import include, path
 
 
 urlpatterns = [
+    #/tibianusapp/index
     path('tibianusapp/', include('tibianusapp.urls')),
     path('admin/', admin.site.urls),
 ]
