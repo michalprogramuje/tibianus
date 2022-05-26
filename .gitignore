@@ -1,1 +1,3 @@
 virtualenvs/
+tibianus/tibianus/db_settings/
+tibianus/tibianus/__pycache__
