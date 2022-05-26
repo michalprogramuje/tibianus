@@ -1,4 +1,6 @@
 virtualenvs/
 tibianus/tibianus/db_settings/db_settings.py
 tibianus/tibianus/db_settings/__pycache__/
-tibianus/tibianus/__pycache__
+tibianus/tibianus/__pycache__/
+tibianus/tibianusapp/migrations/__pycache__/
+tibianus/tibianusapp/__pycache__/
