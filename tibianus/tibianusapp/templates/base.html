@@ -1,0 +1,16 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <meta charset="utf-8">
+    {% block head-content %}{% endblock head-content %}
+</html>
+{% block content %}
+<nav>
+    <a href="#"><img src="{% static 'tibianusapp/tibia_logo.png' %}" alt="my-image"></a>
+    <a href="{% url 'get_all_ranks' %}">Rangi</span></a>
+    <a href="{% url 'get_all_achievements' %}">Osiągnięcia<span></a>
+    <span></span>
+    <span></span>
+    <span></span>
+</nav>
+{% endblock content %}

@@ -1,0 +1,22 @@
+{% include "base.html" %}
+
+
+
+
+{% block content %}
+
+{% for achvievement in achievements %}
+    <pre>
+        <div>
+            {{ achvievement.achvievement_name }} <br/>
+            {{ achvievement.achvievement_description }} <br/>
+            {{ achvievement.loyality_level_point }} <br/>
+            {{ achvievement.loyality_trade_point }}
+        </div>
+    </pre>
+{% endfor %}
+
+{% endblock %}
+
+
+
