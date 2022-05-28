@@ -1,14 +1,41 @@
-{% include "base.html" %}
+{% extends "base.html" %}
+{% load static %}
 
-
-
+{% block meta %}
+    <title>
+        TibianusApp - Dostępne rangi
+    </title>
+    <link rel="stylesheet" href="{% static 'tibianusapp/css/ranks/ranks.css' %}">
+{% endblock %}
 
 {% block content %}
-
-{% for rank in ranks %}
-    <div>{{ rank.rank }}</div>
-{% endfor %}
-
+    <table class="table table-dark table-bordered rank-table">
+        <caption>Lista dostępnych rang</caption>
+        <thead>
+        <tr>
+            <th scope="col" class="rank-number-th">#</th>
+            <th scope="col" class="rank-name-th">Nazwa rangi</th>
+            <th scope="col" class="rank-loyality-level-point-th">Wymagana ilość LLP do zdobycia rangi</th>
+            <th scope="col" class="rank-min-loyality-level-point-th">Minimum LLP do zdobycia</th>
+            <th scope="col" class="rank-max-loyality-level-point-th">Maximum LLP do zdobycia</th>
+            <th scope="col" class="rank-min-loyality-trade-point-th">Minimum LTP to zdobycia</th>
+            <th scope="col" class="rank-max-loyality-trade-point-th">Maximum LTP do zdobycia</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for rank in ranks %}
+        <tr>
+            <th scope="row">{{ rank.id }}</th>
+            <td>{{ rank.rank }}</td>
+            <td>{{ rank.rank_loyality_level_point }}</td>
+            <td>{{ rank.min_loyality_level_point }}</td>
+            <td>{{ rank.max_loyality_level_point }}</td>
+            <td>{{ rank.min_loyality_trade_point }}</td>
+            <td>{{ rank.max_loyality_trade_point }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}
 
 

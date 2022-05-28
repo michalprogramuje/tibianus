@@ -6,10 +6,9 @@ from .models import Achievement, Rank
 
 # Create your views here.
 
+def home(request):
+    return render(request, 'home.html')
 
-def index(request):
-    return HttpResponse("Hello, world bitches.")
-    
 
 def get_all_ranks(request): 
 

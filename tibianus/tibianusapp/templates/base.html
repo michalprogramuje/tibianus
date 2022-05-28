@@ -1,16 +1,32 @@
 {% load static %}
+
 <!DOCTYPE html>
+
 <html lang="en">
-    <meta charset="utf-8">
-    {% block head-content %}{% endblock head-content %}
+    <head>
+        {% block meta %}
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <meta name="description" content="">
+            <meta name="author" content="">
+        {% endblock %}
+        <title>{% block title %}{% endblock %}</title>
+        <link rel="stylesheet" href="{% static 'tibianusapp/css/navbar.css' %}">
+        <link rel="stylesheet" href="{% static 'tibianusapp/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'tibianusapp/fa/css/all.min.css' %}">
+        <script src="{% static 'tibianusapp/js/bootstrap.min.js' %}"></script>
+        {% block stylesheets %}
+            
+        {% endblock %}
+    </head>
+
+    <body>
+        {% include 'navbar.html' %}
+        {% block content %}
+
+        {% endblock %}    
+        {% include 'footer.html' %}
+    </body>
+
 </html>
-{% block content %}
-<nav>
-    <a href="#"><img src="{% static 'tibianusapp/tibia_logo.png' %}" alt="my-image"></a>
-    <a href="{% url 'get_all_ranks' %}">Rangi</span></a>
-    <a href="{% url 'get_all_achievements' %}">Osiągnięcia<span></a>
-    <span></span>
-    <span></span>
-    <span></span>
-</nav>
-{% endblock content %}
+

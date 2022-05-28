@@ -1,0 +1,39 @@
+.nav-item {
+    margin-right: 5em;
+    border: 1px solid grey;
+    border-radius: 0.25rem;
+    background-color: #fff;
+}
+
+.nav-item.home img {
+    max-width: 150px;
+    max-height: 100px;
+}
+
+.d-flex {
+    justify-content: flex-end;
+    margin-left: 30%;
+}
+
+
+.d-flex .btn {
+    margin-left: 1em;
+}
+
+.form-control {
+    width: unset;
+}
+
+.nav-item.usual a {
+    color: #6e9193;
+}
+
+.nav-item.usual a:hover, :focus {
+    color: #162223;
+
+}
+
+.nav-item.usual:hover,:focus {
+    border: 1px solid #162223;
+}
+

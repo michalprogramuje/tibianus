@@ -6,7 +6,12 @@ from django.db import models
 class Rank(models.Model):
 
     rank = models.CharField(max_length=150, unique=True)
-
+    rank_loyality_level_point = models.PositiveIntegerField(null=True)
+    min_loyality_level_point = models.PositiveIntegerField(null=True)
+    max_loyality_level_point = models.PositiveIntegerField(null=True)
+    min_loyality_trade_point = models.PositiveIntegerField(null=True)
+    max_loyality_trade_point = models.PositiveIntegerField(null=True)
+    
     def __str__(self) -> str:
         return self.rank
 
@@ -27,7 +32,7 @@ class Character(models.Model):
     loyality_level_point = models.PositiveIntegerField(null=True)
     loyality_trade_point = models.PositiveIntegerField(null=True)
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.character_name
 
 
@@ -36,7 +41,7 @@ class CharacterAchievement(models.Model):
     achievement = models.ForeignKey(Achievement, on_delete=models.CASCADE)
     achievement_gain = models.DateField()
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f"{str(self.character)} -> {str(self.achievement)}"
    
 

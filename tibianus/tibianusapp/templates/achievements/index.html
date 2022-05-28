@@ -1,22 +1,39 @@
-{% include "base.html" %}
+{% extends 'base.html' %}
+{% load static %}
 
-
+{% block meta %}
+    <title>TibianusApp - Dostępne osiągnięcia</title>
+    <link rel="stylesheet" href="{% static 'tibianusapp/css/achievements/achievements.css' %}">
+{% endblock %}
 
 
 {% block content %}
 
-{% for achvievement in achievements %}
-    <pre>
-        <div>
-            {{ achvievement.achvievement_name }} <br/>
-            {{ achvievement.achvievement_description }} <br/>
-            {{ achvievement.loyality_level_point }} <br/>
-            {{ achvievement.loyality_trade_point }}
-        </div>
-    </pre>
-{% endfor %}
-
+    <table class="table table-dark table-bordered achievements-table">
+        <caption>Lista dostępnych osiągnięć</caption>
+        <thead>
+            <tr>
+                <th scope="col" class="achievement-number-th">#</th>
+                <th scope="col" class="achievement-name-th">Nazwa osiągnięcia</th>
+                <th scope="col" class="achievement-description-th">Opis osiągnięcia</th>
+                <th scope="col" class="achievement-llp-th">Ilość Loyality Level Points</th>
+                <th scope="col" class="achievement-ltp-th">Ilość Loyality Trade Points</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for achvievement in achievements %}
+                <tr>
+                    <th scope="row">{{ achvievement.id }}</th>
+                    <td>{{ achvievement.achvievement_name }}</td>
+                    <td>{{ achvievement.achvievement_description }}</td>
+                    <td>{{ achvievement.loyality_level_point }}</td>
+                    <td>{{ achvievement.loyality_trade_point }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}
+
 
 
 
