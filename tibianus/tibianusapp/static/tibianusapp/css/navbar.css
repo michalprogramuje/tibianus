@@ -10,6 +10,10 @@
     max-height: 100px;
 }
 
+.nav-item.home a {
+    border: 1px solid #162223;
+}
+
 .d-flex {
     justify-content: flex-end;
     margin-left: 30%;
