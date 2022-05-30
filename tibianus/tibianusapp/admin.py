@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Achievement, Character, CharacterAchievement, Rank
+from .models import Achievement, Character, CharacterAchievement, Rank, Task, TaskType, TaskDifficulty
 
 # Register your models here.
-admin.site.register([Character, Rank, Achievement, CharacterAchievement])
+admin.site.register([Character, Rank, Achievement, CharacterAchievement, Task, TaskDifficulty, TaskType])

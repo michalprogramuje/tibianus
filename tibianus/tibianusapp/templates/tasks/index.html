@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block meta %}
+    <title>TibianusApp - Dostępne taski</title>
+    <link rel="stylesheet" href="{% static 'tibianusapp/css/achievements/achievements.css' %}">
+{% endblock %}
+
+
+{% block content %}
+
+    <table class="table table-dark table-bordered achievements-table">
+        <caption>Lista dostępnych tasków</caption>
+        <thead>
+            <tr>
+                <th scope="col" class="task-number-th">#</th>
+                <th scope="col" class="task-name-th">Nazwa taska</th>
+                <th scope="col" class="task-description-th">Opis taska</th>
+                <th scope="col" class="task-type-th">Typ taska</th>
+                <th scope="col" class="task-difficulty-th">Trudność taska</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for task in tasks %}
+                <tr>
+                    <th scope="row">{{ task.id }}</th>
+                    <td>{{ task.task_name }}</td>
+                    <td>{{ task.task_description }}</td>
+                    <td>{{ task.task_type }}</td>
+                    <td>{{ task.task_difficulty }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

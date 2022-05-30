@@ -15,6 +15,31 @@ class Rank(models.Model):
     def __str__(self) -> str:
         return self.rank
 
+class TaskType(models.Model):
+    task_type = models.CharField(max_length = 50)
+
+    def __str__(self) -> str:
+        return self.task_type
+
+class TaskDifficulty(models.Model):
+    task_difficulty = models.CharField(max_length = 50)
+    min_level_gain = models.PositiveIntegerField(null=True)
+    max_level_gain = models.PositiveIntegerField(null=True)
+    min_trade_gain = models.PositiveIntegerField(null=True)
+    max_trade_gain = models.PositiveIntegerField(null=True)
+
+    def __str__(self) -> str:
+        return self.task_difficulty
+
+class Task(models.Model):
+    task_name = models.CharField(max_length=300, unique=True)
+    task_description = models.TextField(null=True)
+    task_type = models.ForeignKey(TaskType, on_delete=models.CASCADE)
+    task_difficulty = models.ForeignKey(TaskDifficulty,on_delete=models.CASCADE)
+
+    def __str__(self) -> str:
+        return self.task_name
+
 
 class Achievement(models.Model):
     achvievement_name = models.CharField(max_length=300, unique=True)

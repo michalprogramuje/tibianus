@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 
-from .models import Achievement, Rank
+from .models import Achievement, Rank, Task
 
 
 # Create your views here.
@@ -21,3 +21,8 @@ def get_all_achievements(request):
     achievements = Achievement.objects.all()
 
     return render(request, 'achievements/index.html', {'achievements': achievements})
+def get_all_tasks(request):
+
+    tasks = Task.objects.all()
+
+    return render(request, 'tasks/index.html', {'tasks': tasks})
