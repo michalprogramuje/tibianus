@@ -1,3 +1,4 @@
+from pyexpat import model
 from django.db import models
 
 # Create your models here.
@@ -31,15 +32,6 @@ class TaskDifficulty(models.Model):
     def __str__(self) -> str:
         return self.task_difficulty
 
-class Task(models.Model):
-    task_name = models.CharField(max_length=300, unique=True)
-    task_description = models.TextField(null=True)
-    task_type = models.ForeignKey(TaskType, on_delete=models.CASCADE)
-    task_difficulty = models.ForeignKey(TaskDifficulty,on_delete=models.CASCADE)
-
-    def __str__(self) -> str:
-        return self.task_name
-
 
 class Achievement(models.Model):
     achvievement_name = models.CharField(max_length=300, unique=True)
@@ -49,6 +41,18 @@ class Achievement(models.Model):
 
     def __str__(self) -> str:
         return self.achvievement_name 
+
+
+class Task(models.Model):
+    task_name = models.CharField(max_length=300, unique=True)
+    task_description = models.TextField(null=True)
+    task_type = models.ForeignKey(TaskType, on_delete=models.CASCADE)
+    task_difficulty = models.ForeignKey(TaskDifficulty,on_delete=models.CASCADE)
+    task_achievement = models.ForeignKey(Achievement, on_delete=models.CASCADE, null=True)
+
+    def __str__(self) -> str:
+        return self.task_name
+
 
 class Character(models.Model):
 
@@ -69,6 +73,17 @@ class CharacterAchievement(models.Model):
     def __str__(self) -> str:
         return f"{str(self.character)} -> {str(self.achievement)}"
    
+
+
+class ActiveTask(models.Model): 
+
+    character = models.OneToOneField(Character, on_delete=models.SET_NULL, null=True)
+    task = models.ForeignKey(Task, on_delete=models.SET_NULL, null=True)
+    added = models.DateField(auto_now_add=True)
+
+    def __str__(self) -> str:
+        return f"{str(self.character)} -> {str(self.task)}"
+
 
 
 # Po głębszej analize - To narazie jest nam niepotrzebne 

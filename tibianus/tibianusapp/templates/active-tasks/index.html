@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block meta %}
+    <title>TibianusApp - Aktywne taski</title>
+    <link rel="stylesheet" href="{% static 'tibianusapp/css/active-tasks/active-tasks.css' %}">
+{% endblock %}
+
+
+{% block content %}
+
+    <table class="table table-dark table-bordered active-tasks-table">
+        <caption>Lista aktywnych tasków</caption>
+        <thead>
+            <tr>
+                <th scope="col" class="active-tasks-number-th">#</th>
+                <th scope="col" class="active-tasks-character-name-th">Nazwa postaci</th>
+                <th scope="col" class="active-tasks-name-th">Nazwa taska</th>
+                <th scope="col" class="active-tasks-added-th">Data rozpoczęcia taska</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for active_task in active_tasks %}
+                <tr>
+                    <th scope="row">{{ active_task.id }}</th>
+                    <td>{{ active_task.character }}</td>
+                    <td>{{ active_task.task }}</td>
+                    <td>{{ active_task.added }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+
+
+
+

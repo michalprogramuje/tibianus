@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block meta %}
+    <title>TibianusApp - dodaj aktywne zadanie</title>
+    <link rel="stylesheet" href="{% static 'tibianusapp/css/add-active-tasks/add-active-tasks.css' %}">
+{% endblock %}
+
+
+{% block content %}
+    
+    <form action="/tibianusapp/add-active-task" method="post" class="add-active-task-form">
+        <!-- <div class="radio"> -->
+        <div class="mb-3"></div>
+            {% csrf_token %}
+            {% if messages %}
+                {% for message in messages %}
+                        <div class="alert {{ message.tags }} alert-dismissible p-2 pb-3">
+                            <a class="close font-weight-normal initialism" data-dismiss="alert" href="#"><samp>×</samp></a> 
+                                {{ message }}
+                        </div>
+                {% endfor %}
+            {% endif %}
+            {{ form }}
+            <button type="submit" class="btn btn-primary">Aktywuj</button>
+            
+        </div>
+    </form>
+{% endblock %}
+
+
+
+
