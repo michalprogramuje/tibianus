@@ -1,4 +1,5 @@
 from pyexpat import model
+from statistics import mode
 from django.db import models
 
 # Create your models here.
@@ -84,6 +85,14 @@ class ActiveTask(models.Model):
     def __str__(self) -> str:
         return f"{str(self.character)} -> {str(self.task)}"
 
+
+class Monster(models.Model):
+
+    monster_name = models.CharField(max_length=250, unique=True)
+    monster_exp = models.BigIntegerField()
+
+    def __str__(self) -> str:
+        return f"{str(self.monster_name)} -> {str(self.monster_exp)}"
 
 
 
