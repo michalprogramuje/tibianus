@@ -2,14 +2,14 @@
 {% load static %}
 
 {% block meta %}
-    <title>TibianusApp - dodaj aktywne zadanie</title>
-    <link rel="stylesheet" href="{% static 'tibianusapp/css/add-active-tasks/add-active-tasks.css' %}">
+    <title>TibianusApp - ukończ zadanie</title>
+    <link rel="stylesheet" href="{% static 'tibianusapp/css/complete-the-task/complete-the-task.css' %}">
 {% endblock %}
 
 
 {% block content %}
     
-    <form action="/tibianusapp/add-active-task" method="post" class="add-active-task-form">
+    <form action="/tibianusapp/complete-the-task" method="post" class="complete-the-task-form">
         <!-- <div class="radio"> -->
         <div class="mb-3"></div>
             {% csrf_token %}
@@ -22,7 +22,7 @@
                 {% endfor %}
             {% endif %}
             {{ form }}
-            <button type="submit" class="btn btn-primary">Losuj zadanie</button>
+            <button type="submit" class="btn btn-primary">Ukończ zadanie</button>
             
         </div>
     </form>

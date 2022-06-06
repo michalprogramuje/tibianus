@@ -1,0 +1,24 @@
+.complete-the-task-form {
+    text-align: center;
+    display: block;
+}
+
+.complete-the-task-form label {
+    display: block;
+}
+
+#id_task {
+    display: block;
+    margin: auto;
+    margin-bottom: 2em;
+    width: auto;
+}
+
+.btn-primary {
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+.pb-3 {
+    text-align: center;
+}

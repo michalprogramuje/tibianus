@@ -8,5 +8,6 @@ urlpatterns = [
     path('tasks', views.get_all_tasks, name='get_all_tasks'),
     path('active-tasks', views.get_all_active_tasks, name='get_all_active_tasks'),
     path('add-active-task', views.add_active_task, name='add_active_task'),
+    path('complete-the-task', views.complete_the_task, name='complete_the_task'),
 
 ]

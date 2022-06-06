@@ -57,7 +57,7 @@ class Task(models.Model):
 class Character(models.Model):
 
     character_name = models.CharField(max_length=100)
-    rank_name = models.OneToOneField(Rank, on_delete=models.SET_NULL, null=True)
+    rank_name = models.ForeignKey(Rank, on_delete=models.SET_NULL, null=True)
     loyality_level_point = models.PositiveIntegerField(null=True)
     loyality_trade_point = models.PositiveIntegerField(null=True)
 
@@ -85,25 +85,5 @@ class ActiveTask(models.Model):
         return f"{str(self.character)} -> {str(self.task)}"
 
 
-
-# Po głębszej analize - To narazie jest nam niepotrzebne 
-# class LoyalityLevelPoint(models.Model):
-
-#     character = models.OneToOneField(Character, on_delete=models.CASCADE, primary_key=True)
-#     loyality_level_point = models.IntegerField()
-
-
-#     def __str__(self):
-#         return "%s => %s points" % (self.character, self.loyality_level_point)
-
-
-
-# class LoyalityTradePoint(models.Model):
-
-#     character = models.OneToOneField(Character, on_delete=models.CASCADE, primary_key=True)
-#     loyality_trade_point = models.IntegerField()
-
-#     def __str__(self):
-#         return "%s => %s points" % (self.character, self.loyality_trade_point)
 
 
