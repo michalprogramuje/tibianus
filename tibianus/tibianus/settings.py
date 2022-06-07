@@ -33,7 +33,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'tibianusapp.apps.TibianusappConfig',
+    'tibianusapp',
+    # 'tibianusapp.apps.TibianusappConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

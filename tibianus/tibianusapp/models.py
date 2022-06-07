@@ -1,6 +1,6 @@
-from pyexpat import model
-from statistics import mode
 from django.db import models
+import requests
+from typing import Union
 
 # Create your models here.
 
@@ -16,6 +16,7 @@ class Rank(models.Model):
     
     def __str__(self) -> str:
         return self.rank
+
 
 class TaskType(models.Model):
     task_type = models.CharField(max_length = 50)
@@ -91,8 +92,11 @@ class Monster(models.Model):
     monster_name = models.CharField(max_length=250, unique=True)
     monster_exp = models.BigIntegerField()
 
+
+
     def __str__(self) -> str:
         return f"{str(self.monster_name)} -> {str(self.monster_exp)}"
+
 
 
 

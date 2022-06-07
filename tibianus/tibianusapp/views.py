@@ -97,4 +97,3 @@ def complete_the_task(request):
     form = CompleteTaskForm()
     
     return render(request, 'complete-the-task/index.html', {'form': form})    
-
