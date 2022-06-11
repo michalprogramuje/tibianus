@@ -2,7 +2,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from .forms import ActiveTasksForm, CompleteTaskForm
 from django import forms
-from .models import Achievement, ActiveTask, Rank, Task, Character, TaskDifficulty
+from .models import Achievement, ActiveTask, Monster, Rank, Task, Character, TaskDifficulty
 from django.contrib import messages
 import random
 # Create your views here.
@@ -50,13 +50,34 @@ def add_active_task(request):
             else:
                 char_object = Character.objects.get(character_name=character_name)
                 task_difficulty_id = TaskDifficulty.objects.get(task_difficulty=char_object.rank_name)
-                tasks = Task.objects.filter(task_difficulty=task_difficulty_id)
-                randomized_id = random.randint(0, len(tasks)-1)
-                looted_task = tasks[randomized_id]
-                new_active_task = ActiveTask(character=character_name, task=looted_task)
-                new_active_task.save()
-                messages.success(request, f'{character_name} wylosował zadanie \'{looted_task}\'. Powodzenia!')
-                return HttpResponseRedirect('add-active-task')
+                
+                rank_id = Rank.objects.get(rank=char_object.rank_name)
+                min_experience_permonster = rank_id.min_experience_permonster
+                max_experience_permonster = rank_id.max_experience_permonster 
+                min_experience_pertask = rank_id.min_experience_pertask
+                max_experience_pertask = rank_id.max_experience_pertask 
+                
+                get_monsters = Monster.objects.filter(monster_exp__range=(min_experience_permonster, max_experience_permonster))
+                experience = random.randint(min_experience_pertask, max_experience_pertask)
+                randomed_monster_index = random.randint(0, len(get_monsters)-1)
+                monster_choosen = get_monsters[randomed_monster_index]
+                count = int(experience / monster_choosen.monster_exp)
+                task_name = f"Zabij {count} {monster_choosen.monster_name}"
+                task_exist = Task.objects.filter(task_name=task_name)
+                task_type_id = 1
+                task_description = f"Ten task to \'{task_name}\' Task dla rangi {rank_id.rank}. Powodzenia!"
+                end_message = f"Wylosowałeś task \'{task_name}\'. Ilość punktów doświadczenia per task jaką wylosowałeś wynosi {experience}. Ilość expa jaką daje wylosowany potwór wynosi {monster_choosen.monster_exp}. Sumarycznie masz do zabicia {count} {monster_choosen.monster_name}"
+                
+                if(task_exist):
+                    new_active_task = ActiveTask(character=character_name, task=task_exist)
+                    new_active_task.save()
+                    messages.success(request, f'{end_message}. Powodzenia!')
+                else:
+                    new_task = Task(task_name=task_name, task_difficulty_id=task_difficulty_id.id, task_type_id=task_type_id, task_description=task_description)
+                    new_task.save()
+                    new_active_task = ActiveTask(character=character_name, task=new_task)
+                    new_active_task.save()
+                    messages.success(request, f'{end_message}. Powodzenia!')
     else:
         form = ActiveTasksForm()
     
