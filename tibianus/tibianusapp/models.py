@@ -13,9 +13,14 @@ class Rank(models.Model):
     max_loyality_level_point = models.PositiveIntegerField(null=True)
     min_loyality_trade_point = models.PositiveIntegerField(null=True)
     max_loyality_trade_point = models.PositiveIntegerField(null=True)
+    min_experience_permonster = models.PositiveIntegerField(null=True)
+    max_experience_permonster = models.PositiveIntegerField(null=True)
+    min_experience_pertask = models.PositiveIntegerField(null=True)
+    max_experience_pertask = models.PositiveIntegerField(null=True)
     
     def __str__(self) -> str:
         return self.rank
+
 
 
 class TaskType(models.Model):
