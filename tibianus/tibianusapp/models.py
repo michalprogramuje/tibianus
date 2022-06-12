@@ -8,7 +8,8 @@ from typing import Union
 class Rank(models.Model):
 
     rank = models.CharField(max_length=150, unique=True)
-    rank_loyality_level_point = models.PositiveIntegerField(null=True)
+    min_rank_loyality_level_point = models.PositiveIntegerField(null=True)
+    max_rank_loyality_level_point = models.PositiveIntegerField(null=True)
     min_loyality_level_point = models.PositiveIntegerField(null=True)
     max_loyality_level_point = models.PositiveIntegerField(null=True)
     min_loyality_trade_point = models.PositiveIntegerField(null=True)
